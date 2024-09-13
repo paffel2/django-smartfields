@@ -42,6 +42,14 @@ class Dependency(object):
         if self._suffix:
             return "%s_%s" % (self.field.name, self._suffix)
         return self.field.name
+    
+    @property
+    def attname(self):
+        if self._attname:
+            return self._attname
+        if self._suffix:
+            return "%s_%s" % (self.field.name, self._suffix)
+        return self.field.name
 
     @property
     def _dependee(self):

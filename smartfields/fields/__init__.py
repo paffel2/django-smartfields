@@ -58,6 +58,7 @@ class Field(fields.Field):
         super(Field, self).__init__(verbose_name=verbose_name, name=name, **kwargs)
 
     def contribute_to_class(self, cls, name, **kwargs):
+        self.set_attributes_from_name(name)
         super(Field, self).contribute_to_class(cls, name, **kwargs)
         if not issubclass(cls, SmartfieldsModelMixin):
             cls.__bases__ = (SmartfieldsModelMixin,) + cls.__bases__
